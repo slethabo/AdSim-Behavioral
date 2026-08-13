@@ -1,8 +1,8 @@
-# 🔐 AWS Automated Key Remediation
+#  AWS Automated Key Remediation
 
 An AWS security automation project designed to rapidly disable compromised IAM access keys, reducing the time an exposed credential remains usable.
 
-## 🚨 Security Problem
+## Security Problem
 
 Compromised AWS access keys can allow unauthorized users to authenticate to AWS and perform actions based on the permissions assigned to the identity.
 
@@ -10,7 +10,7 @@ If a compromised credential remains active, an attacker may have more time to ac
 
 This project demonstrates how AWS IAM access-key remediation can be automated using Python and AWS services.
 
-## 🏗️ Architecture
+## Architecture
 
 ```text
               Compromised IAM Key
@@ -35,7 +35,7 @@ This project demonstrates how AWS IAM access-key remediation can be automated us
               └────────┬────────┘
                        │
                        ▼
-                🔒 Key Disabled
+                  Key Disabled
                        │
                        ▼
               Incident Response
