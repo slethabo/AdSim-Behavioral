@@ -1,27 +1,44 @@
-# AdSim-Behavioral: Windows Adware & Persistence Simulator
+# 🔐 AWS Automated Key Remediation
 
-A controlled, modular behavioral simulation script designed to mimic the persistence and execution mechanics of commodity adware strains. This tool serves as a benign artifact for detection engineers and system administrators to validate endpoint telemetry, alert triggers, and host-level monitoring baselines.
+An AWS security automation project designed to rapidly disable compromised IAM access keys, reducing the time an exposed credential remains usable.
 
----
+## 🚨 Security Problem
 
-## ⚠️ Defensive Disclaimer
-This project is strictly developed for educational, defensive testing, and portfolio demonstration purposes. It executes entirely locally, contacts no external malicious infrastructure, handles no sensitive data, and includes a dedicated cleanup routine to restore the host environment to its baseline state.
+Compromised AWS access keys can allow unauthorized users to authenticate to AWS and perform actions based on the permissions assigned to the identity.
 
----
+If a compromised credential remains active, an attacker may have more time to access resources or perform malicious API actions.
 
-## Technical Features
+This project demonstrates how AWS IAM access-key remediation can be automated using Python and AWS services.
 
-* **Execution Profiling:** Launches a completely benign web-browser event targeting a safe, reputable URL to simulate an unauthorized ad-delivery mechanism.
-* **Native Persistence Abuse:** Leverages native Windows scheduling utilities (`schtasks.exe`) to configure a repeating 10-minute callback loop, accurately replicating real-world malware survival mechanics.
-* **Stealth Packaging:** Compiled using PyInstaller with window-hiding execution parameters (`--noconsole`) to match the background operational profile of stealth consumer threats.
-* **Automated De-escalation:** Features a built-in `--cleanup` engine that systematically purges all scheduled tasks and system artifacts, ensuring a 100% reversible lifecycle.
+## 🏗️ Architecture
 
----
-
-## Usage & Operations
-
-To execute or test the simulation framework, run the compiled binary via the terminal using the following operational flags:
-
+```text
+              Compromised IAM Key
+                       │
+                       ▼
+              ┌─────────────────┐
+              │ Detection /     │
+              │ Security Alert  │
+              └────────┬────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │   AWS Lambda    │
+              │   Remediation   │
+              └────────┬────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │      AWS IAM    │
+              │ Update Access   │
+              │      Key        │
+              └────────┬────────┘
+                       │
+                       ▼
+                🔒 Key Disabled
+                       │
+                       ▼
+              Incident Response
 ### 1. Initial Simulation & Persistence Setup
 Registers the 10-minute looping task in the operating system and triggers the initial benign browser payload.
 ```powershell
