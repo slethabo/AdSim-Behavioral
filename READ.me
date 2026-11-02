@@ -1,45 +1,57 @@
-#  AWS Automated Key Remediation
+# AdSim Behavioral
 
-An AWS security automation project designed to rapidly disable compromised IAM access keys, reducing the time an exposed credential remains usable.
+A controlled security research project for simulating suspicious endpoint behaviour and validating security detection capabilities.
 
-## Security Problem
+## Overview
 
-Compromised AWS access keys can allow unauthorized users to authenticate to AWS and perform actions based on the permissions assigned to the identity.
+AdSim Behavioral is a cybersecurity research project designed to simulate selected behaviours commonly associated with commodity adware in a controlled environment.
 
-If a compromised credential remains active, an attacker may have more time to access resources or perform malicious API actions.
+The project explores how suspicious endpoint activity can be reproduced safely to support detection engineering, security monitoring, and analysis of endpoint telemetry.
 
-This project demonstrates how AWS IAM access-key remediation can be automated using Python and AWS services.
+Rather than deploying actual adware, AdSim uses benign simulations to help understand how security tools identify and report potentially suspicious activity.
 
-## Architecture
+## Objectives
 
-```text
-              Compromised IAM Key
-                       │
-                       ▼
-              ┌─────────────────┐
-              │ Detection /     │
-              │ Security Alert  │
-              └────────┬────────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │   AWS Lambda    │
-              │   Remediation   │
-              └────────┬────────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │      AWS IAM    │
-              │ Update Access   │
-              │      Key        │
-              └────────┬────────┘
-                       │
-                       ▼
-                  Key Disabled
-                       │
-                       ▼
-              Incident Response
-### 1. Initial Simulation & Persistence Setup
-Registers the 10-minute looping task in the operating system and triggers the initial benign browser payload.
-```powershell
-.\adsim.exe --setup
+- Simulate selected behaviours associated with commodity adware.
+- Explore endpoint execution and persistence-related detection concepts.
+- Understand how suspicious activity is represented in security telemetry.
+- Support the testing and validation of detection alerts.
+- Develop practical experience in threat simulation and detection engineering.
+
+## Project Components
+
+The project includes:
+
+- **Python simulation:** A script for reproducing selected suspicious endpoint behaviours in a controlled environment.
+- **Interactive Jupyter Notebook:** A research and experimentation environment for exploring the simulated behaviour.
+- **Documentation:** Project notes, research context, and usage information.
+
+## Security Considerations
+
+AdSim Behavioral is intended for authorised security research, experimentation, and defensive detection testing.
+
+- Simulations should only be conducted in controlled environments.
+- No actual malware or adware deployment is intended.
+- Do not execute simulations on systems without authorisation.
+- The project is designed to support defensive security research.
+
+## Learning Outcomes
+
+This project provides practical exposure to:
+
+- Threat simulation
+- Endpoint security
+- Detection engineering
+- Security telemetry and monitoring
+- Adware behaviour analysis
+- Defensive security research
+
+## Disclaimer
+
+This project is intended strictly for educational and defensive cybersecurity purposes. It does not aim to develop, distribute, or deploy malicious software.
+
+## Author
+
+**Lethabo Sangweni**
+
+
